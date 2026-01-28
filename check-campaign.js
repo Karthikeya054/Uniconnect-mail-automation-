@@ -1,6 +1,8 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
-dotenv.config({ path: 'apps/app/.env' });
+import fs from 'fs';
+const envPath = fs.existsSync('apps/app/.env') ? 'apps/app/.env' : '.env';
+dotenv.config({ path: envPath });
 
 const { Client } = pg;
 const client = new Client({
